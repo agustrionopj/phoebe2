@@ -6,24 +6,25 @@ build:
   pull: true
   commands:
     - git clone git://github.com/astropy/ci-helpers.git
-    - cmd ci-helpers/appveyor/setup_conda.sh
+    - cmd ci-helpers\\appveyor\\setup_conda.sh
     - python setup.py build
     - python setup.py install --user
-    - mkdir ~/.phoebe-svn
-    - cp tests/travis/phoebe.config ~/.phoebe-svn/
     - git clone git://github.com/phoebe-project/phoebe1.git
-    - cd phoebe1/phoebe-lib
+    - cd phoebe1\\phoebe-lib
     - ./configure
     - make
     - sudo make install
     - sudo ldconfig -v
-    - cd ../phoebe-py
+    - cd..
+    - cd phoebe-py
     - python setup.py build
     - python setup.py install --user
-    - cd ../..
+    - cd..
+    - cd..
+    - cp tests/travis/phoebe.config ~/.phoebe-svn/
     - git clone git://github.com/dfm/photodynam.git
     - cd photodynam
     - make
     - sudo cp photodynam /usr/local/bin/
-    - cd ..
-    - nosetests -v -s -d -w tests/nosetests/;
+    - cd..
+    - nosetests -v -s -d -w tests\\nosetests\\;

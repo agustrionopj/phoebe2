@@ -6,7 +6,7 @@ build:
   pull: true
   commands:
     - git clone git://github.com/astropy/ci-helpers.git
-    - source ci-helpers/travis/setup_conda.sh
+    - cmd ci-helpers/appveyor/setup_conda.sh
     - python setup.py build
     - python setup.py install --user
     - mkdir ~/.phoebe-svn

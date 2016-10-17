@@ -33,7 +33,7 @@ os: Visual Studio 2015
 
 install:
     - git clone git://github.com/astropy/ci-helpers.git
-    - source ci-helpers/travis/setup_conda.sh
+    - cm ci-helpers/appveyor/windows_sdk.cmd
     - python setup.py build
     - python setup.py install --user
     - mkdir ~/.phoebe-svn

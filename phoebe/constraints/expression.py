@@ -11,6 +11,7 @@ class ConstraintVar(object):
     def __init__(self, bundle, twig):
 
         self._bundle = bundle
+        self._parameter = None
 
         self._is_param = False
         self._is_constant = False
@@ -21,7 +22,7 @@ class ConstraintVar(object):
         try:
             #~ print "ConstraintVar.__init__ twig: {}".format(twig)
             unique_label = _twig_to_uniqueid(bundle, twig=twig)
-        except ValueError, msg:
+        except ValueError:
             # didn't return a unique match - either several or None
 
             # TODO: check length of results?
@@ -30,7 +31,7 @@ class ConstraintVar(object):
 
 
             # TODO: check to see if valid constant, method, etc
-            raise NotImplementedError(msg)
+            raise ValueError("provided twig does not result in unique match")
 
         else:
             # we have a unique match to a parameter
@@ -87,14 +88,23 @@ class ConstraintVar(object):
         if not self.is_param:
             raise ValueError("this var does not point to a parameter")
 
-        return self._bundle.get_parameter(uniqueid=self.unique_label, check_visible=False, check_default=False)
+        # this is quite expensive, so let's cache the parameter object so we only
+        # have to filter on the first time this is called
+        if self._parameter is None:
+            self._parameter = self._bundle.get_parameter(uniqueid=self.unique_label, check_visible=False, check_default=False)
+
+        return self._parameter
 
     def get_quantity(self, units=None, t=None):
         """
         """
         if self.is_param:
             # TODO: CAREFUL, this may cause infinite loops if we try to run constraints through get_value
-            return self._bundle.get_quantity(uniqueid=self.unique_label, units=units, t=t)
+            try:
+                return self._bundle.get_quantity(uniqueid=self.unique_label, units=units, t=t, check_visible=False, check_default=False)
+            except AttributeError:
+                # then not a FloatParameter
+                return self._bundle.get_value(uniqueid=self.unique_label, check_visible=False, check_default=False)
 
         else:
             # TODO: constants and methods
@@ -108,7 +118,7 @@ class ConstraintVar(object):
         """
         if self.is_param:
             # TODO: CAREFUL, this may cause infinite loops if we try to run constraints through get_value
-            return self._bundle.get_value(uniqueid=self.unique_label, units=units, t=t)
+            return self._bundle.get_value(uniqueid=self.unique_label, units=units, t=t, check_visible=False, check_default=False)
 
         else:
             # TODO: constants and methods
@@ -152,5 +162,3 @@ class ConstraintVar(object):
         needs to be backend safe (not passing or storing bundle)
         """
         return self._safe_label
-
-

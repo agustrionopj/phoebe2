@@ -1,7 +1,26 @@
-PHOEBE 2.0 RELEASE NOTES
+PHOEBE 2.2
 ------------------------
 
-Hello and thank you for your interest in PHOEBE 2.0! PHOEBE is a binary star modeling code, but version 2.0 also supports the modeling of single rotating stars.
+<p align="center"><a href="http://phoebe-project.org"><img src="./images/logo_blue.svg" alt="PHOEBE logo" width="160px" align="center"/></a></p>
+
+<pre align="center" style="text-align:center; font-family:monospace; margin: 30px">
+  pip install phoebe
+</pre>
+
+<p align="center">
+  <a href="https://pypi.org/project/phoebe/"><img src="https://img.shields.io/badge/pip-phoebe-blue.svg"/></a>
+  <a href="http://phoebe-project.org/install"><img src="https://img.shields.io/badge/python-2.7+%20%7C%203.6+-blue.svg"/></a>
+  <a href="https://github.com/phoebe-project/phoebe2/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-GPL3-blue.svg"/></a>
+  <a href="https://travis-ci.org/phoebe-project/phoebe2"><img src="https://travis-ci.org/phoebe-project/phoebe2.svg?branch=master"/></a>
+  <a href="http://phoebe-project.org/docs"><img src="https://img.shields.io/badge/docs-passing-success.svg"/></a>
+  <a href="https://ui.adsabs.harvard.edu/abs/2016ApJS..227...29P"><img src="https://img.shields.io/badge/ApJS-Prsa+2016-lightgrey.svg"/></a>
+  <a href="https://ui.adsabs.harvard.edu/abs/2018ApJS..237...26H"><img src="https://img.shields.io/badge/ApJS-Horvat+2018-lightgrey.svg"/></a>
+  <a href="https://ui.adsabs.harvard.edu/abs/2019arXiv191209474J"><img src="https://img.shields.io/badge/arXiv-Jones+2020-lightgrey.svg"/></a>
+</p>
+
+<p align="center">
+  <a href="http://phoebe-project.org"><img src="./images/console.gif" alt="Console Animation" width="600px" align="center"/></a>
+</p>
 
 
 INTRODUCTION
@@ -9,62 +28,189 @@ INTRODUCTION
 
 PHOEBE stands for PHysics Of Eclipsing BinariEs. PHOEBE is pronounced [fee-bee](https://www.merriam-webster.com/dictionary/phoebe?pronunciation&lang=en_us&file=phoebe01.wav).
 
-PHOEBE 2.0 is a rewrite of the original PHOEBE code. For most up-to-date information please refer to the PHOEBE project webpage: [http://phoebe-project.org](http://phoebe-project.org)
+PHOEBE 2 is a rewrite of the original PHOEBE code. For most up-to-date information please refer to the PHOEBE project webpage: [http://phoebe-project.org](http://phoebe-project.org)
 
-PHOEBE 2.0 is described by the release paper published in the Astrophysical Journal Supplement, [Prša et al. (2016, ApJS 227, 29)](http://adsabs.harvard.edu/abs/2016ApJS..227...29P).
+PHOEBE 2.0 is described by the release paper published in the Astrophysical Journal Supplement, [Prša et al. (2016, ApJS 227, 29)](https://ui.adsabs.harvard.edu/#abs/2016ApJS..227...29P).  The addition of support for misaligned stars in version 2.1 is described in [Horvat et al. (2018, ApJS 237, 26)](https://ui.adsabs.harvard.edu/#abs/2018ApJS..237...26H).  Interstellar extinction and support for Python 3 was added in version 2.2 and described in [Jones et al. (2020, submitted)](https://ui.adsabs.harvard.edu/abs/2019arXiv191209474J).
 
-PHOEBE 2.0 is released under the [GNU General Public License v3](https://www.gnu.org/licenses/gpl-3.0.en.html).
-
+PHOEBE 2 is released under the [GNU General Public License v3](https://www.gnu.org/licenses/gpl-3.0.en.html).
 
 The source code is available for download from the [PHOEBE project homepage](http://phoebe-project.org) and from [github](https://github.com/phoebe-project/phoebe2).
 
-The development of PHOEBE 2.0 is funded in part by the [NSF grant #1517474](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1517474).
+The development of PHOEBE 2 is funded in part by [NSF grant #1517474](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1517474), [NSF grant #1909109](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1909109) and [NASA 17-ADAP17-68](https://ui.adsabs.harvard.edu/abs/2017adap.prop...68P).
 
 
 DOWNLOAD AND INSTALLATION
 -------------------------
 
-The easiest way to download and install PHOEBE 2.0 is by using pip:
+The easiest way to download and install PHOEBE 2 is by using pip:
 
     pip install phoebe
 
 To install it site-wide, prefix the `pip` command with `sudo` or run it as root.
 
-To download the PHOEBE 2.0 source code, use git:
+To download the PHOEBE 2 source code, use git:
 
     git clone https://github.com/phoebe-project/phoebe2.git
 
-To install PHOEBE 2.0 from the source locally, go to the `phoebe2/` directory and issue:
+To install PHOEBE 2 from the source locally, go to the `phoebe2/` directory and issue:
 
     python setup.py build
     python setup.py install --user
 
-To install PHOEBE 2.0 from the source site-wide, go to the `phoebe2/` directory and issue:
+To install PHOEBE 2 from the source site-wide, go to the `phoebe2/` directory and issue:
 
     python setup.py build
     sudo python setup.py install
 
-For further details on pre-requisites and minimal versions of python consult the [PHOEBE project webpage](http://phoebe-project.org).
+For further details on pre-requisites and minimal versions of python consult the [PHOEBE project webpage](http://phoebe-project.org/install/2.2).
 
 
 GETTING STARTED
 ---------------
 
-PHOEBE 2.0 has a steep learning curve. There is no graphical front-end as of yet; the front-end is now written in python. To start PHOEBE, issue:
+PHOEBE 2 has a steep learning curve. There is no graphical front-end as of yet; the front-end is now written in python. To start PHOEBE, issue:
 
     python
     >>> import phoebe
     >>>
 
-To understand how to use PHOEBE, please consult the [tutorials, scripts and manuals](http://phoebe-project.org/docs/2.0/#Tutorials) hosted on the PHOEBE webpage.
+To understand how to use PHOEBE, please consult the [tutorials, scripts and manuals](http://phoebe-project.org/docs/2.2/) hosted on the PHOEBE webpage.
 
 
 CHANGELOG
 ----------
 
+### 2.2.1 - g++/gcc version check hotfix
+
+* Improves the detection of g++/gcc version to compare against requirements during setup.
+
+### 2.2.0 - extinction feature release
+
+* Add support for interstellar extinction/reddening.
+* Support for Python 3.6+ in addition to Python 2.7+.
+* Overhaul of limb-darkening with new ld_mode and ld_coeffs_source parameters.
+* Overhaul of passband luminosity and flux scaling with new pblum_mode parameter, including support for maintaining color relations between multiple passbands.
+* Ability to provide third light in either flux or percentage units, via the new l3_mode and l3_frac parameters.
+* Support for computing a model at different times than the observations, via the new compute_times or computes_phases parameter.
+* Transition from pickled to FITS passband files, with automatic detection for available updates.  The tables can now also be accessed via tables.phoebe-project.org.
+* DISABLED support for beaming/boosting.
+* Allow flipping Kepler's thrid law constraint to solve for q.
+* Require overwrite=True during add_* or run_* methods that would result in overwriting an existing label.
+* Constraint for logg.
+* Account for time-dependence (dpdt/dperdt) in t0 constraints.
+
+### 2.1.17 - ignore fits passbands hotfix
+
+* Future-proof to ignore for passband files with extensions other than ".pb"
+  which may be introduced in future versions of PHOEBE.
+
+### 2.1.16 - eccentric/misaligned irradiation hotfix
+
+* Fixes bug where irradiation was over-optimized and not recomputed as needed for
+  eccentric or misaligned orbits.  Introduced in the optimizations in 2.1.6.
+
+### 2.1.15 - spots hotfix
+
+* Fixes 'long' location of spots on single stars.
+* Fixes treatment of spots on secondary 'half' of contact systems.
+* Fixes loading legacy files with a spot that has source of 0 due to a bug in legacy.
+* Fixes overriding 'ntriangles' by passing keyword argument to run_compute.
+
+### 2.1.14 - contacts inclination RVs hotfix
+
+* Fixes the polar rotation axis for RVs in contact systems with non-90 inclinations
+  by re-enabling the alignment (pitch, yaw) constraints and enforcing them to be 0.
+
+### 2.1.13 - constraint flip loop hotfix
+
+* Fixes infinite loop when trying to flip esinw AND ecosw
+* Adds ability to flip mass (Kepler's third law) to solve for q
+* Fixes bug introduced in 2.1.9 in which out-of-limits constrained parameters in
+an envelope were being raised before all constraints could resolve successfully.
+
+### 2.1.12 - legacy ephemeris and kwargs checks hotfix
+
+* Fixes applying t0 when importing legacy dataset which use phase.
+* Fixes ignoring other compute options when running checks on kwargs during run_compute.
+
+### 2.1.11 - legacy dataset import hotfix
+
+* Fixes loading legacy datasets which use phase (by translating to time with the current ephemeris).
+* Fixes loading legacy datasets with errors in magnitudes (by converting to errors in flux units).
+* Fixes plotting RV datasets in which only one component has times (which is often the case when importing from a legacy file).
+
+### 2.1.10 - ldint hotfix
+
+* Removes ldint from the weights in the computations of RVs and LPs.
+
+### 2.1.9 - limits hotfix
+
+* Fixes a bug where parameter limits were not being checked and out-of-limits errors not raised correctly.
+
+### 2.1.8 - mesh convergence hotfix
+
+* Fixes a bug where certain parameters would cause the meshing algorithm to fail to converge.  With this fix, up to 4 additional attempts will be made with random initial starting locations which should converge for most cases.
+
+### 2.1.7 - comparison operators hotfix
+
+* Fixes a bug where comparisons between Parameters/ParameterSets and values were returning nonsensical values.
+* Comparing ParameterSets with any object will now return a NotImplementedError
+* Comparing Parameters will compare against the value or quantity, with default units when applicable.
+* Comparing equivalence between two Parameter objects will compare the uniqueids of the Parameters, NOT the values.
+
+### 2.1.6 - optimization hotfix
+
+* Fixes a bug where automatic detection of eclipses was failing to properly fallback on only detecting the horizon.
+* Introduces several other significant optimizations, particularly in run_compute.
+
+### 2.1.5 - single star get_orbits and line-profile hotfix
+
+* Fixes a bug in hierarchy.get_orbits() for a single star hierarchy which resulted in an error being raised while computing line-profiles.
+
+### 2.1.4 - freq constraint hotfix
+
+* This fixes the inversion of the frequency constraint when flipping to solve for period.
+
+### 2.1.3 - overflow error for semidetached systems hotfix
+
+* Semi-detached systems could raise an error in the backend caused by the volume being slightly over the critical value when translating between requiv in solar units to volume in unitless/roche units.  When this numerical discrepancy is detected, the critical value is now adopted and a warning is sent via the logger.
+
+### 2.1.2 - constraints in solar units hotfix
+
+* All constraints are now executed (by default) in solar units instead of SI.  The Kepler's third law constraint (constraining mass by default) failed to have sufficient precision in SI, resulting in inaccurate masses.  Furthermore, if the constraint was flipped, inaccurate values of sma could be passed to the backend, resulting in overflow in the semi-detached case.
+* Bundles created before 2.1.2 and imported into 2.1.2+ will continue to use SI units for constraints and should function fine, but will not benefit from this update and will be incapable of changing the system hierarchy.
+
+### 2.1.1 - MPI detection hotfix
+
+* PHOEBE now detects if its within MPI on various different MPI installations (previously only worked for openmpi).
+
+### 2.1.0 - misalignment feature release
+
+* Add support for spin-orbit misalignment
+* Add support for line profile (LP) datasets
+* Switch parameterization from rpole/pot to requiv (including new semi-detached and contact constraints)
+* Significant rewrite to plotting infrastructure to use [autofig](http://github.com/kecnry/autofig)
+* Introduction of [nparray](http://github.com/kecnry/nparray) support within parameters
+* Significant rewrite to mesh dataset infrastructure to allow choosing which columns are exposed
+* Distinguish Roche (xyz) from Plane-of-Sky (uvw) coordinates
+* Ability to toggle interactive constraints and interactive system checks independently
+* Implementation of ParameterSet.tags and Parameter.tags
+* General support for renaming tags/labels
+* Expose pblum for contacts
+* Expose per-component r and rprojs for contacts (used to be based on primary frame of reference only)
+* Fix definition of vgamma (see note in 2.0.4 release below)
+* Remove phshift parameter (see note in 2.0.3 release below)
+* Permanently rename 'long' parameter for spots (see note in 2.0.2 release below)
+* Numerous other minor bug fixes and improvements
+
+### 2.0.11 - astropy version dependency hotfix
+
+* Set astropy dependency to be >=1.0 and < 3.0 (as astropy 3.0 requires python 3)
+
 ### 2.0.10 - legacy import extraneous spaces hotfix
 
 * Handle ignoring extraneous spaces when importing a PHOEBE legacy file.
+
 
 ### 2.0.9 - \_default Parameters hotfix
 
@@ -116,7 +262,7 @@ CHANGELOG
 
 * Definition of flux and luminosity now use ptfarea instead of pbspan.  In the bolometric case, these give the same quantity. This discrepancy was absorbed entirely by pblum scaling, so relative fluxes should not be affected, but the underlying absolute luminosities were incorrect for passbands (non-bolometric).  In addition to under-the-hood changes, the exposed mesh column for 'pbspan' is now removed and replaced with 'ptfarea', but as this is not yet a documented column, should not cause backwards-compatibility issues.  
 
-### 2.0.0
+### 2.0.0 - official release of PHOEBE 2.0
 
 * PHOEBE 2.0 is not backwards compatible with PHOEBE 2.0-beta (although the interface has not changed appreciably) or with PHOEBE 2.0-alpha (substantial rewrite). Going forward with incremental releases, every effort will be put into backwards compatibility. The changes and important considerations of the new version will be detailed in the ChangeLog.
 
